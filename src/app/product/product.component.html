@@ -1,0 +1,12 @@
+<div class="col-6 col-md-4 mb-3 mx-2" [ngStyle]="{'background-color': product.quantity==0? 'red': ''}"  *ngIf="product.price<priceMaxOutput ||priceMaxOutput==null">
+    <div class="card" style="width: 15rem;">
+        <img class="card-img-top" src="../../assets/images/blue.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{product.title}}</h5>
+          <p class="card-text">{{product.title}} liker par {{product.like}}</p>
+          <button href="#" (click)="sendNotif()" class="btn btn-primary mx-3">Like</button>
+          <a class="btn btn-success"  (click)="nextProduct()" [routerLink]="['/products/details', product.id]">details</a>
+        </div>
+      </div>
+
+</div>

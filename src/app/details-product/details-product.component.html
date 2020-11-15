@@ -1,0 +1,48 @@
+{{product | json}}
+<div class="container">
+   <div class="row mt-5">
+       <div class="col-12 col-md-8">
+           <table class="table table-hover">
+               <tr>
+                   <td>Title</td>
+                   <td>{{ product.title }}</td>
+
+               </tr>
+               <tr>
+                <td>Price</td>
+                <td>{{ product.price }}</td>
+
+            </tr>
+            <tr>
+                <td>Like</td>
+                <td>{{ product.like }}</td>
+
+            </tr>
+            <tr>
+                <td>Quantity</td>
+                <td>{{ product.quantity }}</td>
+
+            </tr>
+           </table>
+ 
+       </div>
+       <div class="col-6 col-md-4">
+        <div class="card" style="width: 15rem;">
+            <img class="card-img-top" src="../../assets/images/blue.jpg" alt="Card image cap">
+          </div>
+          <div class="card-body">
+              <button class="btn btn-danger my-3 mr-3" (click)="deleteProduct(product.id)">Supprimer</button>
+              <button (click)="show()" class="btn btn-success">Editer</button>
+
+
+          </div>
+
+       </div>
+
+   </div>
+   <div>
+
+       <app-edit-product *ngIf="showForm" (editProduct)="update($event)" [product]="product"></app-edit-product>
+   </div>
+
+</div>

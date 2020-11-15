@@ -1,0 +1,28 @@
+<div class="container">
+    <button class="btn btn-primary mt-4" (click)="show()">Add product</button>
+    <!-- <button class="btn btn-primary mt-4" (click)="showFormM()">Add product bel view child</button>  --> 
+ 
+     <app-form-product *ngIf="showForm"  (notification)="addProduct($event)"></app-form-product>
+
+    <div class="row mt-5">
+        <form>
+            <div class="form-group">
+                <label>Search Price:</label>
+                <input type="number" [(ngModel)]="priceMax" name="priceMax" class="form-control">
+            </div>
+        </form>
+
+    </div>
+    <div class="row my-5">
+        <app-product (notification)="incrementLike($event)" [priceMaxOutput]="priceMax" *ngFor="let p of listProduct" [product]="p"></app-product>
+        <div *ngIf="errMess">
+            <h2>Error</h2>
+            <h4>{{errMess}}</h4>
+        </div>
+        <div [hidden]="errMess||listProduct" class="spinner-grow text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          
+
+    </div>
+</div>
